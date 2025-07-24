@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Tracking - FastFood Pro</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .order-status-steps {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            margin-bottom: 1rem;
+        }
+        .order-status-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+            min-width: 70px;
+            position: relative;
+        }
+        .order-status-circle {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: #dee2e6;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 0;
+            z-index: 2;
+            transition: background 0.2s;
+        }
+        .order-status-step.active .order-status-circle,
+        .order-status-step.completed .order-status-circle {
+            background: #ff5724;
+        }
+        .order-status-step.delivered .order-status-circle {
+            background: #28a745;
+        }
+        .order-status-label {
+            font-size: 0.9rem;
+            color: #888;
+            margin-top: 0.3rem;
+        }
+        .order-status-step.active .order-status-label,
+        .order-status-step.completed .order-status-label {
+            color: #ff5724;
+            font-weight: 600;
+        }
+        .order-status-step.delivered .order-status-label {
+            color: #28a745;
+            font-weight: 600;
+        }
+        .order-status-line {
+            flex: 1;
+            height: 4px;
+            background: #dee2e6;
+            border-radius: 2px;
+            margin: 0;
+            z-index: 1;
+            transition: background 0.2s;
+        }
+        .order-status-step.completed + .order-status-line {
+            background: #ff5724;
+        }
+        .order-status-step.delivered + .order-status-line {
+            background: #28a745;
+        }
+        .order-card {
+            border: 1px solid #eee;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            margin-bottom: 2rem;
+        }
+        .order-badge {
+            font-size: 0.9rem;
+            padding: 0.3em 1em;
+            border-radius: 1em;
+            font-weight: 500;
+        }
+        .order-badge.preparing { background: #fff3cd; color: #ff9800; }
+        .order-badge.out { background: #e3f2fd; color: #2196f3; }
+        .order-badge.delivered { background: #e8f5e9; color: #28a745; }
+        .order-badge.cancelled { background: #ffebee; color: #e53935; }
+        .tab-btn {
+            border: none;
+            background: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            padding: 0.7em 2em;
+            border-radius: 8px 8px 0 0;
+            color: #888;
+            transition: background 0.2s, color 0.2s;
+        }
+        .tab-btn.active {
+            background: #ff5724;
+            color: #fff;
+        }
+        .tab-btn:focus { outline: none; }
+        .order-card .order-food-img {
+            width: 48px;
+            height: 48px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold fs-3" href="index.html">
+                <i class="bi bi-cup-hot-fill"></i> FastFood Pro
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li>
+                    <li class="nav-item"><a class="nav-link" href="promotions.html">Promotions</a></li>
+                    <li class="nav-item"><a class="nav-link" href="stores.html">Store locator</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <a href="cart.html" class="btn btn-outline-warning me-2 position-relative">
+                        <i class="bi bi-cart3"></i>
+                    </a>
+                    <a href="account.html" class="btn btn-outline-warning">
+                        <i class="bi bi-person"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Order Tracking Section -->
+    <section class="py-5 bg-light" style="margin-top: 80px;">
+        <div class="container">
+            <h2 class="fw-bold mb-4">Your Order History</h2>
+            <div class="d-flex mb-4">
+                <button class="tab-btn active" id="tab-current" onclick="showTab('current')">Current Orders</button>
+                <button class="tab-btn" id="tab-past" onclick="showTab('past')">Past Orders</button>
+                <button class="tab-btn" id="tab-cancelled" onclick="showTab('cancelled')">Cancelled</button>
+            </div>
+            <div id="orders-current">
+                <!-- Order Card 1 -->
+                <div class="order-card p-4">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <div>
+                            <span class="fw-bold">FFP-20240726-001</span>
+                            <span class="text-muted ms-2" style="font-size:0.95em;">July 26, 2024, 1:30 PM</span>
+                        </div>
+                        <span class="order-badge preparing">Preparing</span>
+                    </div>
+                    <div class="order-status-steps mb-3">
+                        <div class="order-status-step active">
+                            <div class="order-status-circle"><i class="bi bi-egg-fried"></i></div>
+                            <div class="order-status-label">Preparing</div>
+                        </div>
+                        <div class="order-status-line"></div>
+                        <div class="order-status-step">
+                            <div class="order-status-circle"><i class="bi bi-truck"></i></div>
+                            <div class="order-status-label">Out for Delivery</div>
+                        </div>
+                        <div class="order-status-line"></div>
+                        <div class="order-status-step">
+                            <div class="order-status-circle"><i class="bi bi-house-door"></i></div>
+                            <div class="order-status-label">Delivered</div>
+                        </div>
+                    </div>
+                    <div class="row g-3 align-items-center mb-2">
+                        <div class="col-md-2 col-4">
+                            <img src="images/menu/beef-burger.jpg" class="order-food-img" alt="Classic Beef Burger">
+                        </div>
+                        <div class="col-md-6 col-8">
+                            <div class="fw-bold">Classic Beef Burger</div>
+                            <div class="text-muted small">Qty: 1</div>
+                        </div>
+                        <div class="col-md-4 text-end fw-bold text-danger">$8.99</div>
+                    </div>
+                    <div class="row g-3 align-items-center mb-2">
+                        <div class="col-md-2 col-4">
+                            <img src="images/menu/onion-rings.jpg" class="order-food-img" alt="Onion Rings">
+                        </div>
+                        <div class="col-md-6 col-8">
+                            <div class="fw-bold">Onion Rings</div>
+                            <div class="text-muted small">Qty: 1</div>
+                        </div>
+                        <div class="col-md-4 text-end fw-bold text-danger">$4.49</div>
+                    </div>
+                    <div class="row g-3 align-items-center mb-2">
+                        <div class="col-md-2 col-4">
+                            <img src="images/menu/strawberry-milkshake.jpg" class="order-food-img" alt="Strawberry Milkshake">
+                        </div>
+                        <div class="col-md-6 col-8">
+                            <div class="fw-bold">Strawberry Milkshake</div>
+                            <div class="text-muted small">Qty: 1</div>
+                        </div>
+                        <div class="col-md-4 text-end fw-bold text-danger">$4.99</div>
+                    </div>
+                    <div class="row g-3 align-items-center mb-2">
+                        <div class="col-md-2 col-4">
+                            <img src="images/menu/crispy-fries.jpg" class="order-food-img" alt="Crispy Fries">
+                        </div>
+                        <div class="col-md-6 col-8">
+                            <div class="fw-bold">Crispy Fries</div>
+                            <div class="text-muted small">Qty: 1</div>
+                        </div>
+                        <div class="col-md-4 text-end fw-bold text-danger">$3.99</div>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <div class="fw-bold">Total:</div>
+                        <div class="fw-bold text-danger fs-5">$22.46</div>
+                    </div>
+                    <div class="text-end mt-2">
+                        <a href="#" class="btn btn-outline-secondary btn-sm">View Details</a>
+                    </div>
+                </div>
+                <!-- Order Card 2 -->
+                <div class="order-card p-4">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <div>
+                            <span class="fw-bold">FFP-20240725-002</span>
+                            <span class="text-muted ms-2" style="font-size:0.95em;">July 25, 2024, 7:00 PM</span>
+                        </div>
+                        <span class="order-badge out">Out for Delivery</span>
+                    </div>
+                    <div class="order-status-steps mb-3">
+                        <div class="order-status-step completed">
+                            <div class="order-status-circle"><i class="bi bi-egg-fried"></i></div>
+                            <div class="order-status-label">Preparing</div>
+                        </div>
+                        <div class="order-status-line"></div>
+                        <div class="order-status-step active">
+                            <div class="order-status-circle"><i class="bi bi-truck"></i></div>
+                            <div class="order-status-label">Out for Delivery</div>
+                        </div>
+                        <div class="order-status-line"></div>
+                        <div class="order-status-step">
+                            <div class="order-status-circle"><i class="bi bi-house-door"></i></div>
+                            <div class="order-status-label">Delivered</div>
+                        </div>
+                    </div>
+                    <div class="row g-3 align-items-center mb-2">
+                        <div class="col-md-2 col-4">
+                            <img src="images/menu/chicken-sandwich.jpg" class="order-food-img" alt="Spicy Chicken Sandwich">
+                        </div>
+                        <div class="col-md-6 col-8">
+                            <div class="fw-bold">Spicy Chicken Sandwich</div>
+                            <div class="text-muted small">Qty: 2</div>
+                        </div>
+                        <div class="col-md-4 text-end fw-bold text-danger">$15.98</div>
+                    </div>
+                    <div class="row g-3 align-items-center mb-2">
+                        <div class="col-md-2 col-4">
+                            <img src="images/menu/onion-rings.jpg" class="order-food-img" alt="Onion Rings">
+                        </div>
+                        <div class="col-md-6 col-8">
+                            <div class="fw-bold">Onion Rings</div>
+                            <div class="text-muted small">Qty: 1</div>
+                        </div>
+                        <div class="col-md-4 text-end fw-bold text-danger">$4.49</div>
+                    </div>
+                    <div class="row g-3 align-items-center mb-2">
+                        <div class="col-md-2 col-4">
+                            <img src="images/menu/veggie.jpg" class="order-food-img" alt="Veggie Delight Wrap">
+                        </div>
+                        <div class="col-md-6 col-8">
+                            <div class="fw-bold">Veggie Delight Wrap</div>
+                            <div class="text-muted small">Qty: 1</div>
+                        </div>
+                        <div class="col-md-4 text-end fw-bold text-danger">$6.99</div>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <div class="fw-bold">Total:</div>
+                        <div class="fw-bold text-danger fs-5">$27.46</div>
+                    </div>
+                    <div class="text-end mt-2">
+                        <a href="#" class="btn btn-outline-secondary btn-sm">View Details</a>
+                    </div>
+                </div>
+            </div>
+            <div id="orders-past" style="display:none;">
+                <div class="order-card p-4">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <div>
+                            <span class="fw-bold">FFP-20240615-003</span>
+                            <span class="text-muted ms-2" style="font-size:0.95em;">June 15, 2024, 6:10 PM</span>
+                        </div>
+                        <span class="order-badge delivered">Delivered</span>
+                    </div>
+                    <div class="order-status-steps mb-3">
+                        <div class="order-status-step completed">
+                            <div class="order-status-circle"><i class="bi bi-egg-fried"></i></div>
+                            <div class="order-status-label">Preparing</div>
+                        </div>
+                        <div class="order-status-line"></div>
+                        <div class="order-status-step completed">
+                            <div class="order-status-circle"><i class="bi bi-truck"></i></div>
+                            <div class="order-status-label">Out for Delivery</div>
+                        </div>
+                        <div class="order-status-line"></div>
+                        <div class="order-status-step completed">
+                            <div class="order-status-circle"><i class="bi bi-house-door"></i></div>
+                            <div class="order-status-label">Delivered</div>
+                        </div>
+                    </div>
+                    <div class="row g-3 align-items-center mb-2">
+                        <div class="col-md-2 col-4">
+                            <img src="images/menu/veggie.jpg" class="order-food-img" alt="Veggie Delight Wrap">
+                        </div>
+                        <div class="col-md-6 col-8">
+                            <div class="fw-bold">Veggie Delight Wrap</div>
+                            <div class="text-muted small">Qty: 1</div>
+                        </div>
+                        <div class="col-md-4 text-end fw-bold text-danger">$6.99</div>
+                    </div>
+                    <div class="row g-3 align-items-center mb-2">
+                        <div class="col-md-2 col-4">
+                            <img src="images/menu/chessy-bacon-burger.jpg" class="order-food-img" alt="Cheesy Bacon Burger">
+                        </div>
+                        <div class="col-md-6 col-8">
+                            <div class="fw-bold">Cheesy Bacon Burger</div>
+                            <div class="text-muted small">Qty: 1</div>
+                        </div>
+                        <div class="col-md-4 text-end fw-bold text-danger">$10.99</div>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <div class="fw-bold">Total:</div>
+                        <div class="fw-bold text-danger fs-5">$17.98</div>
+                    </div>
+                    <div class="text-end mt-2">
+                        <a href="#" class="btn btn-outline-secondary btn-sm">View Details</a>
+                    </div>
+                </div>
+            </div>
+            <div id="orders-cancelled" style="display:none;">
+                <div class="order-card p-4">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <div>
+                            <span class="fw-bold">FFP-20240610-004</span>
+                            <span class="text-muted ms-2" style="font-size:0.95em;">June 10, 2024, 5:00 PM</span>
+                        </div>
+                        <span class="order-badge cancelled">Cancelled</span>
+                    </div>
+                    <div class="order-status-steps mb-3">
+                        <div class="order-status-step completed">
+                            <div class="order-status-circle"><i class="bi bi-egg-fried"></i></div>
+                            <div class="order-status-label">Preparing</div>
+                        </div>
+                        <div class="order-status-line"></div>
+                        <div class="order-status-step">
+                            <div class="order-status-circle"><i class="bi bi-truck"></i></div>
+                            <div class="order-status-label">Out for Delivery</div>
+                        </div>
+                        <div class="order-status-line"></div>
+                        <div class="order-status-step">
+                            <div class="order-status-circle"><i class="bi bi-house-door"></i></div>
+                            <div class="order-status-label">Delivered</div>
+                        </div>
+                    </div>
+                    <div class="row g-3 align-items-center mb-2">
+                        <div class="col-md-2 col-4">
+                            <img src="images/menu/hotdog.jpg" class="order-food-img" alt="Classic Hot Dog">
+                        </div>
+                        <div class="col-md-6 col-8">
+                            <div class="fw-bold">Classic Hot Dog</div>
+                            <div class="text-muted small">Qty: 1</div>
+                        </div>
+                        <div class="col-md-4 text-end fw-bold text-danger">$5.99</div>
+                    </div>
+                    <div class="row g-3 align-items-center mb-2">
+                        <div class="col-md-2 col-4">
+                            <img src="images/menu/crispy-fries.jpg" class="order-food-img" alt="Crispy Fries">
+                        </div>
+                        <div class="col-md-6 col-8">
+                            <div class="fw-bold">Crispy Fries</div>
+                            <div class="text-muted small">Qty: 1</div>
+                        </div>
+                        <div class="col-md-4 text-end fw-bold text-danger">$3.99</div>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <div class="fw-bold">Total:</div>
+                        <div class="fw-bold text-danger fs-5">$9.98</div>
+                    </div>
+                    <div class="text-end mt-2">
+                        <a href="#" class="btn btn-outline-secondary btn-sm">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row text-center mb-4">
+                <div class="col-12">
+                    <h4 class="fw-bold mb-3">
+                        <i class="bi bi-cup-hot-fill text-warning"></i> FastFood Pro
+                    </h4>
+                </div>
+            </div>
+            <div class="row justify-content-center mb-4">
+                <div class="col-lg-6">
+                    <div class="text-center">
+                        <p class="mb-3">Stay up to date with our latest news and promotions!</p>
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Enter your email address">
+                            <button class="btn btn-warning" type="button">Subscribe</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row align-items-center">
+                <div class="col-md-4">
+                    <select class="form-select form-select-sm" style="width: auto;">
+                        <option>English</option>
+                        <option>Tiếng Việt</option>
+                    </select>
+                </div>
+                <div class="col-md-4 text-center">
+                    <p class="mb-0">&copy; 2025 FastFood Pro.</p>
+                </div>
+                <div class="col-md-4 text-end">
+                    <div class="social-links">
+                        <a href="#" class="text-white me-3"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="text-white me-3"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="text-white"><i class="bi bi-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+    // Tab switching logic
+    function showTab(tab) {
+        document.getElementById('orders-current').style.display = (tab === 'current') ? '' : 'none';
+        document.getElementById('orders-past').style.display = (tab === 'past') ? '' : 'none';
+        document.getElementById('orders-cancelled').style.display = (tab === 'cancelled') ? '' : 'none';
+        document.getElementById('tab-current').classList.toggle('active', tab === 'current');
+        document.getElementById('tab-past').classList.toggle('active', tab === 'past');
+        document.getElementById('tab-cancelled').classList.toggle('active', tab === 'cancelled');
+    }
+    </script>
+</body>
+</html> 
