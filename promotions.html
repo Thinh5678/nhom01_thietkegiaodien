@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promotions - FastFood Pro</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                        url('images/promotions/banner-promotion.jpg');
+            background-size: cover;
+            background-position: center;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: #FFC107;
+        }
+        
+        .promo-card {
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .promo-card .card-body {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        
+        .promo-card .card-text {
+            flex-grow: 1;
+            margin-bottom: 1rem;
+        }
+        
+        .promo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .promo-card img {
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .newsletter-section {
+            background: linear-gradient(rgba(255, 87, 36, 0.7), rgba(255, 87, 36, 0.7)), 
+                        url('images/promotions/exclusive-offers.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .btn-custom {
+            background-color: #FF5724;
+            border-color: #FF5724;
+            color: white;
+            border-radius: 25px;
+            padding: 10px 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-custom:hover {
+            background-color: #e64a19;
+            border-color: #e64a19;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .btn-white {
+            background-color: white;
+            border-color: white;
+            color: #FF5724;
+            border-radius: 25px;
+            padding: 10px 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-white:hover {
+            background-color: #f8f9fa;
+            border-color: #f8f9fa;
+            color: #FF5724;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold fs-3" href="index.html">
+                <i class="bi bi-cup-hot-fill"></i> FastFood Pro
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="menu.html">Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="promotions.html">Promotions</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="stores.html">Store Locator</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <div class="input-group me-3" style="width: 300px;">
+                        <input type="text" class="form-control" placeholder="Search for food or stores...">
+                        <button class="btn btn-outline-secondary" type="button">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </div>
+                    <a href="cart.html" class="btn btn-outline-warning me-2 position-relative">
+                        <i class="bi bi-cart3"></i>
+                        <span id="cart-count-badge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.7rem; display: none;">
+                            0
+                        </span>
+                    </a>
+                    <a href="account.html" class="btn btn-outline-warning">
+                        <i class="bi bi-person"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section text-white" style="margin-top: 80px;">
+        <div class="container">
+            <div class="row justify-content-center text-center">
+                <div class="col-lg-8">
+                    <h1 class="display-3 fw-bold mb-4" style="color: #FFC107; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
+                        Weekend Feast Frenzy!
+                    </h1>
+                    <p class="lead mb-5 fs-5">
+                        Enjoy 30% off on all Family Combo Meals and get a free large soda pitcher this weekend only!
+                    </p>
+                    <a href="#hot-deals" class="btn btn-custom btn-lg px-4 py-3">
+                        Order Now & Save!
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Today's Hot Deals -->
+    <section id="hot-deals" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title fw-bold">Today's Hot Deals</h2>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="card promo-card">
+                        <img src="images/promotions/big-burger-bliss.jpg" class="card-img-top" alt="Big Burger Bliss Combo">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">Big Burger Bliss Combo</h5>
+                            <p class="card-text text-muted">
+                                A classic burger, fries, and drink for the ultimate meal.
+                            </p>
+                            <div class="mt-auto">
+                                <div class="text-center mb-2">
+                                    <span class="fw-bold text-warning fs-5">Only $12.99</span>
+                                </div>
+                                <div class="text-center">
+                                    <button class="btn btn-custom">Get This Deal</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="card promo-card">
+                        <img src="images/promotions/family-chicken.jpg" class="card-img-top" alt="Family Chicken Bucket Deal">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">Family Chicken Bucket Deal</h5>
+                            <p class="card-text text-muted">
+                                10 pieces of our famous fried chicken, 2 large sides.
+                            </p>
+                            <div class="mt-auto">
+                                <div class="text-center mb-2">
+                                    <span class="fw-bold text-danger">Save 25%!</span>
+                                </div>
+                                <div class="text-center">
+                                    <button class="btn btn-custom">View Details</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="card promo-card">
+                        <img src="images/promotions/healthy-veggie.jpg" class="card-img-top" alt="Healthy Veggie Delight">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">Healthy Veggie Delight</h5>
+                            <p class="card-text text-muted">
+                                Nutritious veggie wrap with a side salad and Iced tea.
+                            </p>
+                            <div class="mt-auto">
+                                <div class="text-center mb-2">
+                                    <span class="fw-bold text-warning fs-5">Just $9.50</span>
+                                </div>
+                                <div class="text-center">
+                                    <button class="btn btn-custom">Claim Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="card promo-card">
+                        <img src="images/promotions/kids-meal.jpg" class="card-img-top" alt="Kids Meal Fun Pack">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">Kids Meal Fun Pack</h5>
+                            <p class="card-text text-muted">
+                                Burger/Nuggets, small fries, drink, and a toy.
+                            </p>
+                            <div class="mt-auto">
+                                <div class="text-center mb-2">
+                                    <span class="fw-bold text-warning fs-5">Starting at $6.99</span>
+                                </div>
+                                <div class="text-center">
+                                    <button class="btn btn-custom">Order for Kids</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="card promo-card">
+                        <img src="images/promotions/fish-fillet.jpg" class="card-img-top" alt="Fish Fillet Friday Deal">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">Fish Fillet Friday Deal</h5>
+                            <p class="card-text text-muted">
+                                Golden fried fish fillet sandwich with medium fries.
+                            </p>
+                            <div class="mt-auto">
+                                <div class="text-center mb-2">
+                                    <span class="fw-bold text-warning fs-5">Special Price $8.75</span>
+                                </div>
+                                <div class="text-center">
+                                    <button class="btn btn-custom">Grab Lunch</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="card promo-card">
+                        <img src="images/promotions/morning-power-burrito.jpg" class="card-img-top" alt="Morning Power Burrito">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">Morning Power Burrito</h5>
+                            <p class="card-text text-muted">
+                                Start your day right with our breakfast burrito and coffee.
+                            </p>
+                            <div class="mt-auto">
+                                <div class="text-center mb-2">
+                                    <span class="fw-bold text-warning fs-5">Bundle for $7.00</span>
+                                </div>
+                                <div class="text-center">
+                                    <button class="btn btn-custom">Start Your Day</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sweet Treats & Desserts -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title fw-bold">Sweet Treats & Desserts</h2>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="card promo-card">
+                        <img src="images/promotions/sweet-sundae.jpg" class="card-img-top" alt="Sweet Sundae Savings">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">Sweet Sundae Savings</h5>
+                            <p class="card-text text-muted">
+                                Buy any large sundae, get a mini sundae free!
+                            </p>
+                            <div class="mt-auto">
+                                <div class="text-center mb-2">
+                                    <span class="fw-bold text-success">Free Mini Sundae!</span>
+                                </div>
+                                <div class="text-center">
+                                    <button class="btn btn-custom">Indulge Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="card promo-card">
+                        <img src="images/promotions/double-pie.jpg" class="card-img-top" alt="Double Pie Delight">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">Double Pie Delight</h5>
+                            <p class="card-text text-muted">
+                                Two classic apple pies for the price of one.
+                            </p>
+                            <div class="mt-auto">
+                                <div class="text-center mb-2">
+                                    <span class="fw-bold text-danger">2 for 1!</span>
+                                </div>
+                                <div class="text-center">
+                                    <button class="btn btn-custom">Grab Dessert</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="card promo-card">
+                        <img src="images/promotions/milkshake-mania.jpg" class="card-img-top" alt="Milkshake Mania">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">Milkshake Mania</h5>
+                            <p class="card-text text-muted">
+                                Any two regular milkshakes for a discounted price.
+                            </p>
+                            <div class="mt-auto">
+                                <div class="text-center mb-2">
+                                    <span class="fw-bold text-warning fs-5">Two for $7.00</span>
+                                </div>
+                                <div class="text-center">
+                                    <button class="btn btn-custom">Sip Sweetly</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="card promo-card">
+                        <img src="images/promotions/cookie-craze.jpg" class="card-img-top" alt="Cookie Craze Pack">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">Cookie Craze Pack</h5>
+                            <p class="card-text text-muted">
+                                Get a dozen assorted cookies for your next gathering.
+                            </p>
+                            <div class="mt-auto">
+                                <div class="text-center mb-2">
+                                    <span class="fw-bold text-warning fs-5">Bulk Savings $10.00</span>
+                                </div>
+                                <div class="text-center">
+                                    <button class="btn btn-custom">Sweet Treat</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Exclusive Loyalty Rewards -->
+    <section class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title fw-bold">Exclusive Loyalty Rewards</h2>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="card promo-card">
+                        <img src="images/promotions/loyalty-member.jpg" class="card-img-top" alt="Loyalty Member Exclusive">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">Loyalty Member Exclusive</h5>
+                            <p class="card-text text-muted">
+                                Special discount for our valued loyalty program members.
+                            </p>
+                            <div class="mt-auto">
+                                <div class="text-center mb-2">
+                                    <span class="fw-bold text-danger">Extra 15% Off!</span>
+                                </div>
+                                <div class="text-center">
+                                    <button class="btn btn-custom">Join Loyalty</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="card promo-card">
+                        <img src="images/promotions/earn-free-drink.jpg" class="card-img-top" alt="Earn Free Drinks!">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">Earn Free Drinks!</h5>
+                            <p class="card-text text-muted">
+                                Collect points on every purchase and redeem for free beverages.
+                            </p>
+                            <div class="mt-auto">
+                                <div class="text-center mb-2">
+                                    <span class="fw-bold text-success">Points for Sips</span>
+                                </div>
+                                <div class="text-center">
+                                    <button class="btn btn-custom">Learn More</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="card promo-card">
+                        <img src="images/promotions/birthday-bonus.jpg" class="card-img-top" alt="Birthday Bonus Treat">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">Birthday Bonus Treat</h5>
+                            <p class="card-text text-muted">
+                                Enjoy a complimentary dessert on your special day.
+                            </p>
+                            <div class="mt-auto">
+                                <div class="text-center mb-2">
+                                    <span class="fw-bold text-warning">Happy Birthday!</span>
+                                </div>
+                                <div class="text-center">
+                                    <button class="btn btn-custom">Register Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="card promo-card">
+                        <img src="images/promotions/app-only-deals.jpg" class="card-img-top" alt="App-Only Deals">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">App-Only Deals</h5>
+                            <p class="card-text text-muted">
+                                Unlock exclusive promotions only available on our mobile app.
+                            </p>
+                            <div class="mt-auto">
+                                <div class="text-center mb-2">
+                                    <span class="fw-bold text-info">Download & Save</span>
+                                </div>
+                                <div class="text-center">
+                                    <button class="btn btn-custom">Get The App</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section py-5 text-white">
+        <div class="container">
+            <div class="row justify-content-center text-center">
+                <div class="col-lg-8">
+                    <h2 class="display-5 fw-bold mb-4">Don't Miss Out! Get Exclusive Offers!</h2>
+                    <p class="lead mb-5">
+                        Subscribe to our newsletter and be the first to know about new menus, promotions, and special events.
+                    </p>
+                    <a href="#" class="btn btn-white btn-lg px-4 py-3">
+                        Subscribe Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row text-center mb-4">
+                <div class="col-12">
+                    <h4 class="fw-bold mb-3">
+                        <i class="bi bi-cup-hot-fill text-warning"></i> FastFood Pro
+                    </h4>
+                </div>
+            </div>
+            <div class="row justify-content-center mb-4">
+                <div class="col-lg-6">
+                    <div class="text-center">
+                        <p class="mb-3">Stay up to date with our latest news and promotions!</p>
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Enter your email address">
+                            <button class="btn btn-warning" type="button">Subscribe</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row align-items-center">
+                <div class="col-md-4">
+                    <select class="form-select form-select-sm" style="width: auto;">
+                        <option>English</option>
+                        <option>Tiếng Việt</option>
+                    </select>
+                </div>
+                <div class="col-md-4 text-center">
+                    <p class="mb-0">&copy; 2025 FastFood Pro.</p>
+                </div>
+                <div class="col-md-4 text-end">
+                    <div class="social-links">
+                        <a href="#" class="text-white me-3"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="text-white me-3"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="text-white"><i class="bi bi-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/cart.js"></script>
+</body>
+</html> 

@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FastFood Pro - Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold fs-3" href="index.html">
+                <i class="bi bi-cup-hot-fill"></i> FastFood Pro
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="menu.html">Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="promotions.html">Promotions</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="stores.html">Store Locator</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <div class="input-group me-3" style="width: 300px;">
+                        <input type="text" class="form-control" placeholder="Search for food or stores...">
+                        <button class="btn btn-outline-secondary" type="button">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </div>
+                    <a href="cart.html" class="btn btn-outline-warning me-2 position-relative">
+                        <i class="bi bi-cart3"></i>
+                        <span id="cart-count-badge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.7rem; display: none;">
+                            0
+                        </span>
+                    </a>
+                    <a href="account.html" class="btn btn-outline-warning">
+                        <i class="bi bi-person"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section d-flex align-items-center min-vh-100">
+        <div class="container">
+            <div class="row justify-content-center text-center">
+                <div class="col-lg-8">
+                    <h1 class="display-3 fw-bold text-white mb-4">
+                        Craving Something Delicious?
+                    </h1>
+                    <p class="lead text-white-50 mb-5">
+                        Discover our mouth-watering menu, exclusive deals, and fast delivery.
+                    </p>
+                    <div class="d-flex gap-3 justify-content-center flex-wrap">
+                        <a href="menu.html" class="btn btn-warning btn-lg px-4 py-3">
+                            <i class="bi bi-arrow-right me-2"></i>Order Now
+                        </a>
+                        <a href="menu.html" class="btn btn-outline-light btn-lg px-4 py-3">
+                            <i class="bi bi-list-ul me-2"></i>Explore Our Menu
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Categories -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-lg-8 mx-auto">
+                    <h2 class="display-5 fw-bold mb-3">Explore Our Popular Categories</h2>
+                    <p class="lead text-muted">Our most loved menu items</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="card category-card border-0 shadow-sm h-100">
+                        <img src="images/home/burger-home.jpg" 
+                             class="card-img-top" alt="Signature Burgers">
+                        <div class="card-body text-center p-4">
+                            <h5 class="card-title fw-bold mb-3">Signature Burgers</h5>
+                            <p class="card-text text-muted small mb-4">
+                                Juicy patties, fresh toppings, and toasted buns. A classic for a reason.
+                            </p>
+                            <a href="menu.html" class="btn btn-outline-warning">View Category</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="card category-card border-0 shadow-sm h-100">
+                        <img src="images/home/chicken-home.jpg" 
+                             class="card-img-top" alt="Crispy Fried Chicken">
+                        <div class="card-body text-center p-4">
+                            <h5 class="card-title fw-bold mb-3">Crispy Fried Chicken</h5>
+                            <p class="card-text text-muted small mb-4">
+                                Our secret recipe chicken, golden brown and perfectly crispy.
+                            </p>
+                            <a href="menu.html" class="btn btn-outline-warning">View Category</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="card category-card border-0 shadow-sm h-100">
+                        <img src="images/home/salad-home.jpg" 
+                             class="card-img-top" alt="Fresh Salads">
+                        <div class="card-body text-center p-4">
+                            <h5 class="card-title fw-bold mb-3">Fresh Salads</h5>
+                            <p class="card-text text-muted small mb-4">
+                                Light, refreshing, and packed with flavor. A healthier option.
+                            </p>
+                            <a href="menu.html" class="btn btn-outline-warning">View Category</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="card category-card border-0 shadow-sm h-100">
+                        <img src="images/home/dessert-home.jpg" 
+                             class="card-img-top" alt="Sweet Desserts">
+                        <div class="card-body text-center p-4">
+                            <h5 class="card-title fw-bold mb-3">Sweet Desserts</h5>
+                            <p class="card-text text-muted small mb-4">
+                                Indulge your sweet tooth with our delightful range of desserts.
+                            </p>
+                            <a href="menu.html" class="btn btn-outline-warning">View Category</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hot Deals & Promotions -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-lg-8 mx-auto">
+                    <h2 class="display-5 fw-bold mb-3">Hot Deals & Promotions</h2>
+                    <p class="lead text-muted">Special offers just for you</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="card promotion-card border-0 shadow-sm h-100">
+                        <img src="images/home/weekend-family.jpg" 
+                             class="card-img-top" alt="Weekend Family Feast">
+                        <div class="card-body p-4">
+                            <h5 class="card-title fw-bold mb-3">Weekend Family Feast</h5>
+                            <p class="card-text text-muted mb-4">
+                                Get a large pizza, 2 burgers, and a 2L soda for just $29.99!
+                            </p>
+                            <a href="promotions.html" class="btn btn-warning">Claim Offer</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card promotion-card border-0 shadow-sm h-100">
+                        <img src="images/home/student-discount.jpg" 
+                             class="card-img-top" alt="Student Discount Tuesdays">
+                        <div class="card-body p-4">
+                            <h5 class="card-title fw-bold mb-3">Student Discount Tuesdays</h5>
+                            <p class="card-text text-muted mb-4">
+                                Show your student ID and get 15% off your entire order!
+                            </p>
+                            <a href="promotions.html" class="btn btn-warning">Claim Offer</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card promotion-card border-0 shadow-sm h-100">
+                        <img src="images/home/free-delivery.jpg" 
+                             class="card-img-top" alt="App Exclusive: Free Delivery">
+                        <div class="card-body p-4">
+                            <h5 class="card-title fw-bold mb-3">App Exclusive: Free Delivery</h5>
+                            <p class="card-text text-muted mb-4">
+                                Order through our app this month and get free delivery on all orders over $20.
+                            </p>
+                            <a href="promotions.html" class="btn btn-warning">Claim Offer</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose FastFood Pro -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-lg-8 mx-auto">
+                    <h2 class="display-5 fw-bold mb-3">Why Choose FastFood Pro?</h2>
+                    <p class="lead text-muted">The reasons that make us your top choice</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="text-center">
+                        <div class="feature-icon mb-4">
+                            <img src="icons/leaf-icon.png" alt="Fresh Ingredients" style="width: 36px; height: 36px;">
+                        </div>
+                        <h5 class="fw-bold mb-3">Fresh Ingredients</h5>
+                        <p class="text-muted">
+                            We use only the freshest, locally sourced ingredients for every meal.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="text-center">
+                        <div class="feature-icon mb-4">
+                            <img src="icons/time-icon.png" alt="Lightning Fast Service" style="width: 36px; height: 36px;">
+                        </div>
+                        <h5 class="fw-bold mb-3">Lightning Fast Service</h5>
+                        <p class="text-muted">
+                            Enjoy quick service without compromising on quality or taste.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="text-center">
+                        <div class="feature-icon mb-4">
+                            <img src="icons/award-icon.png" alt="Unbeatable Quality" style="width: 36px; height: 36px;">
+                        </div>
+                        <h5 class="fw-bold mb-3">Unbeatable Quality</h5>
+                        <p class="text-muted">
+                            Every dish is prepared with care and precision, ensuring perfection.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="text-center">
+                        <div class="feature-icon mb-4">
+                            <img src="icons/dollar-icon.png" alt="Great Value" style="width: 36px; height: 36px;">
+                        </div>
+                        <h5 class="fw-bold mb-3">Great Value</h5>
+                        <p class="text-muted">
+                            Delicious food at prices that won't break the bank.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Testimonials -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-lg-8 mx-auto">
+                    <h2 class="display-5 fw-bold mb-3">What Our Customers Say</h2>
+                    <p class="lead text-muted">Real reviews from our customers</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="card testimonial-card border-0 shadow-sm h-100">
+                        <div class="card-body p-4 text-center">
+                            <p class="card-text mb-3 fst-italic text-muted">
+                                "FastFood Pro has the best burgers in town! Always fresh and incredibly tasty. My go-to place!"
+                            </p>
+                            <div class="mb-3">
+                                <i class="bi bi-star-fill text-warning"></i>
+                                <i class="bi bi-star-fill text-warning"></i>
+                                <i class="bi bi-star-fill text-warning"></i>
+                                <i class="bi bi-star-fill text-warning"></i>
+                                <i class="bi bi-star-fill text-warning"></i>
+                            </div>
+                            <h6 class="fw-bold mb-1 customer-name">Sarah J.</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card testimonial-card border-0 shadow-sm h-100">
+                        <div class="card-body p-4 text-center">
+                            <p class="card-text mb-3 fst-italic text-muted">
+                                "Their fried chicken is amazing - perfectly crispy and juicy every time. The app is super easy to use too!"
+                            </p>
+                            <div class="mb-3">
+                                <i class="bi bi-star-fill text-warning"></i>
+                                <i class="bi bi-star-fill text-warning"></i>
+                                <i class="bi bi-star-fill text-warning"></i>
+                                <i class="bi bi-star-fill text-warning"></i>
+                                <i class="bi bi-star-fill text-warning"></i>
+                            </div>
+                            <h6 class="fw-bold mb-1 customer-name">David L.</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card testimonial-card border-0 shadow-sm h-100">
+                        <div class="card-body p-4 text-center">
+                            <p class="card-text mb-3 fst-italic text-muted">
+                                "I love the fresh salad options, they are so flavorful and a great healthier choice. Fast delivery!"
+                            </p>
+                            <div class="mb-3">
+                                <i class="bi bi-star-fill text-warning"></i>
+                                <i class="bi bi-star-fill text-warning"></i>
+                                <i class="bi bi-star-fill text-warning"></i>
+                                <i class="bi bi-star-fill text-warning"></i>
+                                <i class="bi bi-star-fill text-warning"></i>
+                            </div>
+                            <h6 class="fw-bold mb-1 customer-name">Emily R.</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Find Nearest Store -->
+    <section class="py-5 find-store-section">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-lg-8 mx-auto">
+                    <h2 class="display-5 fw-bold mb-3">Find Your Nearest FastFood Pro</h2>
+                    <p class="lead text-muted mb-4">
+                        Ready to satisfy your cravings? Locate the FastFood Pro restaurant closest to you!
+                    </p>
+                    <a href="stores.html" class="btn btn-warning btn-lg">
+                        <i class="bi bi-geo-alt me-2"></i>Find a Store
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row text-center mb-4">
+                <div class="col-12">
+                    <h4 class="fw-bold mb-3">
+                        <i class="bi bi-cup-hot-fill text-warning"></i> FastFood Pro
+                    </h4>
+                </div>
+            </div>
+            <div class="row justify-content-center mb-4">
+                <div class="col-lg-6">
+                    <div class="text-center">
+                        <p class="mb-3">Stay up to date with our latest news and promotions!</p>
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Enter your email address">
+                            <button class="btn btn-warning" type="button">Subscribe</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row align-items-center">
+                <div class="col-md-4">
+                    <select class="form-select form-select-sm" style="width: auto;">
+                        <option>English</option>
+                        <option>Tiếng Việt</option>
+                    </select>
+                </div>
+                <div class="col-md-4 text-center">
+                    <p class="mb-0">&copy; 2025 FastFood Pro.</p>
+                </div>
+                <div class="col-md-4 text-end">
+                    <div class="social-links">
+                        <a href="#" class="text-white me-3"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="text-white me-3"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="text-white"><i class="bi bi-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/cart.js"></script>
+</body>
+</html> 

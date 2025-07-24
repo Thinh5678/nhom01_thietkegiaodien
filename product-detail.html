@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signature Beef Burger - FastFood Pro</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .thumbnail-images {
+            margin-top: 15px;
+        }
+        
+        .thumbnail-img {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+        }
+        
+        .thumbnail-img:hover {
+            border-color: #FF5724;
+        }
+        
+        .thumbnail-img.active {
+            border-color: #FF5724;
+        }
+        
+        .main-image img {
+            transition: all 0.3s ease;
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+        
+        /* Hide number input arrows */
+        input[type="number"]::-webkit-outer-spin-button,
+        input[type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        
+        input[type="number"] {
+            appearance: textfield;
+            -webkit-appearance: textfield;
+            -moz-appearance: textfield;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold fs-3" href="index.html">
+                <i class="bi bi-cup-hot-fill"></i> FastFood Pro
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="menu.html">Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="promotions.html">Promotions</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="stores.html">Store Locator</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <div class="input-group me-3" style="width: 300px;">
+                        <input type="text" class="form-control" placeholder="Search for food or stores...">
+                        <button class="btn btn-outline-secondary" type="button">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </div>
+                    <a href="cart.html" class="btn btn-outline-warning me-2 position-relative">
+                        <i class="bi bi-cart3"></i>
+                        <span id="cart-count-badge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.7rem; display: none;">
+                            0
+                        </span>
+                    </a>
+                    <a href="account.html" class="btn btn-outline-warning">
+                        <i class="bi bi-person"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Product Detail Section -->
+    <section class="py-5" style="margin-top: 80px;">
+        <div class="container">
+            <div class="row">
+                <!-- Product Images -->
+                <div class="col-lg-6 mb-4">
+                    <div class="product-gallery">
+                        <div class="main-image mb-3">
+                            <img src="images/menu/beef-burger.jpg" 
+                                 class="img-fluid rounded-3 shadow" alt="Signature Beef Burger" id="mainImage">
+                        </div>
+                        <div class="thumbnail-images d-flex gap-2">
+                            <img src="images/menu/beef-burger.jpg" 
+                                 class="img-thumbnail thumbnail-img active" alt="Burger View 1" onclick="changeImage(this.src, this)">
+                            <img src="images/menu/beef-burger.jpg" 
+                                 class="img-thumbnail thumbnail-img" alt="Burger View 2" onclick="changeImage(this.src, this)">
+                            <img src="images/menu/beef-burger.jpg" 
+                                 class="img-thumbnail thumbnail-img" alt="Burger View 3" onclick="changeImage(this.src, this)">
+                            <img src="images/menu/beef-burger.jpg" 
+                                 class="img-thumbnail thumbnail-img" alt="Burger View 4" onclick="changeImage(this.src, this)">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Info -->
+                <div class="col-lg-6">
+                    <div class="product-info">
+                        <h1 class="display-5 fw-bold mb-2 text-dark">Signature Beef Burger</h1>
+                        <div class="price mb-3">
+                            <span class="display-6 fw-bold" style="color: #FF5724;">$12.99</span>
+                        </div>
+                        <div class="rating mb-4">
+                            <div class="d-flex align-items-center">
+                                <div class="me-2">
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                </div>
+                                <span class="text-muted">4.8 (1543 reviews)</span>
+                            </div>
+                        </div>
+
+                        <div class="description mb-4">
+                            <p class="text-muted">
+                                Our classic Signature Beef Burger features a perfectly grilled, juicy beef patty, fresh crisp lettuce, ripe tomatoes, sliced red onions, tangy pickles, and our special secret sauce, all nestled in a toasted brioche bun. A timeless favorite, crafted for ultimate satisfaction.
+                            </p>
+                        </div>
+
+                        <div class="quantity-section mb-4">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <label class="form-label fw-bold mb-0">Quantity:</label>
+                                <div class="d-flex align-items-center" style="background-color: #f8f9fa; border-radius: 25px; padding: 4px; width: 140px;">
+                                    <button class="btn" type="button" onclick="decreaseQuantity()" style="width: 36px; height: 36px; padding: 0; border-radius: 50%; border: none; background: transparent; color: #6c757d; font-weight: bold; font-size: 16px;">-</button>
+                                    <input type="number" class="form-control text-center" value="1" min="1" id="quantity" style="width: 68px; height: 36px; border: none; background: transparent; font-weight: bold; color: #6c757d; font-size: 16px; box-shadow: none; appearance: textfield;" inputmode="numeric" pattern="[0-9]*">
+                                    <button class="btn" type="button" onclick="increaseQuantity()" style="width: 36px; height: 36px; padding: 0; border-radius: 50%; border: none; background: transparent; color: #6c757d; font-weight: bold; font-size: 16px;">+</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="customize-section mb-4">
+                            <h5 class="fw-bold mb-3">Customize Your Order</h5>
+                            <div class="row g-2">
+                                <div class="col-6">
+                                    <div class="p-3 rounded" style="background-color: #f8f9fa;">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="d-flex align-items-center">
+                                                <input class="form-check-input me-3" type="checkbox" id="extraCheese">
+                                                <label class="form-check-label mb-0" for="extraCheese">
+                                                    Add Extra Cheese
+                                                </label>
+                                            </div>
+                                            <span class="text-muted fw-bold">$1.50</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="p-3 rounded" style="background-color: #f8f9fa;">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="d-flex align-items-center">
+                                                <input class="form-check-input me-3" type="checkbox" id="bacon">
+                                                <label class="form-check-label mb-0" for="bacon">
+                                                    Add Bacon Strip
+                                                </label>
+                                            </div>
+                                            <span class="text-muted fw-bold">$2.00</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="p-3 rounded" style="background-color: #f8f9fa;">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="d-flex align-items-center">
+                                                <input class="form-check-input me-3" type="checkbox" id="sauce" checked>
+                                                <label class="form-check-label mb-0" for="sauce">
+                                                    Extra Secret Sauce
+                                                </label>
+                                            </div>
+                                            <span class="text-muted fw-bold">$0.75</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="p-3 rounded" style="background-color: #f8f9fa;">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="d-flex align-items-center">
+                                                <input class="form-check-input me-3" type="checkbox" id="jalapenos">
+                                                <label class="form-check-label mb-0" for="jalapenos">
+                                                    Add Jalapenos
+                                                </label>
+                                            </div>
+                                            <span class="text-muted fw-bold">$0.50</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="action-buttons">
+                            <button class="add-to-cart-btn btn btn-warning" data-id="[PRODUCT_ID]" data-name="[PRODUCT_NAME]" data-price="[PRODUCT_PRICE]" data-img="[PRODUCT_IMG]" data-options="[OPTIONS]" data-qty="[QTY_FROM_INPUT]">Add to cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Collapsible Sections -->
+    <section class="py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="accordion" id="productAccordion">
+                        <div class="accordion-item border-0">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed bg-white text-dark fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#nutritionalFacts">
+                                    Nutritional Facts
+                                </button>
+                            </h2>
+                            <div id="nutritionalFacts" class="accordion-collapse collapse" data-bs-parent="#productAccordion">
+                                <div class="accordion-body">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <p><strong>Calories:</strong> 650</p>
+                                            <p><strong>Protein:</strong> 35g</p>
+                                            <p><strong>Carbohydrates:</strong> 45g</p>
+                                        </div>
+                                        <div class="col-6">
+                                            <p><strong>Fat:</strong> 28g</p>
+                                            <p><strong>Fiber:</strong> 3g</p>
+                                            <p><strong>Sodium:</strong> 1200mg</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item border-0">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed bg-white text-dark fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#ingredients">
+                                    Ingredients
+                                </button>
+                            </h2>
+                            <div id="ingredients" class="accordion-collapse collapse" data-bs-parent="#productAccordion">
+                                <div class="accordion-body">
+                                    <p>Beef patty, brioche bun, lettuce, tomato, red onion, pickles, secret sauce, cheese, salt, pepper, and natural seasonings.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- You Might Also Like -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h3 class="fw-bold mb-4 text-dark">You Might Also Like</h3>
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="text-center">
+                        <img src="images/menu/crispy-fries.jpg" class="rounded-circle mb-3" style="width: 120px; height: 120px; object-fit: cover;" alt="Crispy Golden Fries">
+                        <h6 class="fw-bold">Crispy Golden Fries</h6>
+                        <p class="text-muted mb-2">$3.49</p>
+                        <button class="btn btn-sm" style="background-color: #FF5724; color: white;">
+                            <i class="bi bi-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="text-center">
+                        <img src="images/menu/strawberry-milkshake.jpg" class="rounded-circle mb-3" style="width: 120px; height: 120px; object-fit: cover;" alt="Classic Vanilla Shake">
+                        <h6 class="fw-bold">Classic Vanilla Shake</h6>
+                        <p class="text-muted mb-2">$4.99</p>
+                        <button class="btn btn-sm" style="background-color: #FF5724; color: white;">
+                            <i class="bi bi-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="text-center">
+                        <img src="images/menu/chicken-sandwich.jpg" class="rounded-circle mb-3" style="width: 120px; height: 120px; object-fit: cover;" alt="Spicy Chicken Sandwich">
+                        <h6 class="fw-bold">Spicy Chicken Sandwich</h6>
+                        <p class="text-muted mb-2">$9.99</p>
+                        <button class="btn btn-sm" style="background-color: #FF5724; color: white;">
+                            <i class="bi bi-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="text-center">
+                        <img src="images/menu/garden-fresh-salad.jpg" class="rounded-circle mb-3" style="width: 120px; height: 120px; object-fit: cover;" alt="Fresh Garden Salad">
+                        <h6 class="fw-bold">Fresh Garden Salad</h6>
+                        <p class="text-muted mb-2">$7.99</p>
+                        <button class="btn btn-sm" style="background-color: #FF5724; color: white;">
+                            <i class="bi bi-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Reviews -->
+    <section class="py-5">
+        <div class="container">
+            <h3 class="fw-bold mb-4 text-dark">Customer Reviews</h3>
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-2">
+                                <h6 class="fw-bold mb-0" style="color: #FF5724;">FoodieFanatic</h6>
+                                <div class="ms-auto">
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                </div>
+                            </div>
+                            <p class="text-muted fst-italic">"Absolutely delicious! The burger was perfectly cooked, juicy, and the special sauce really makes it stand out. Best burger in town!"</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-2">
+                                <h6 class="fw-bold mb-0" style="color: #FF5724;">BurgerLover99</h6>
+                                <div class="ms-auto">
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-half text-warning"></i>
+                                </div>
+                            </div>
+                            <p class="text-muted fst-italic">"Great burger, consistent quality. I appreciate the fresh ingredients. The bun was a little too soft for my liking, but still very enjoyable."</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-2">
+                                <h6 class="fw-bold mb-0" style="color: #FF5724;">HealthyEater</h6>
+                                <div class="ms-auto">
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                </div>
+                            </div>
+                            <p class="text-muted fst-italic">"Impressed with the nutritional transparency. The burger tasted amazing and knowing the facts made it even better. Highly recommend!"</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-2">
+                                <h6 class="fw-bold mb-0" style="color: #FF5724;">QuickBite</h6>
+                                <div class="ms-auto">
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-half text-warning"></i>
+                                </div>
+                            </div>
+                            <p class="text-muted fst-italic">"Fast service and a satisfying meal. My go-to for a quick, quality burger. Could use a bit more spice in the sauce."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <button class="btn btn-outline-secondary px-4">View All Reviews</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row text-center mb-4">
+                <div class="col-12">
+                    <h4 class="fw-bold mb-3">
+                        <i class="bi bi-cup-hot-fill text-warning"></i> FastFood Pro
+                    </h4>
+                </div>
+            </div>
+            <div class="row justify-content-center mb-4">
+                <div class="col-lg-6">
+                    <div class="text-center">
+                        <p class="mb-3">Stay up to date with our latest news and promotions!</p>
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Enter your email address">
+                            <button class="btn btn-warning" type="button">Subscribe</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row align-items-center">
+                <div class="col-md-4">
+                    <select class="form-select form-select-sm" style="width: auto;">
+                        <option>English</option>
+                        <option>Tiếng Việt</option>
+                    </select>
+                </div>
+                <div class="col-md-4 text-center">
+                    <p class="mb-0">&copy; 2025 FastFood Pro.</p>
+                </div>
+                <div class="col-md-4 text-end">
+                    <div class="social-links">
+                        <a href="#" class="text-white me-3"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="text-white me-3"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="text-white"><i class="bi bi-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Product detail functionality
+        function changeImage(src, clickedThumbnail) {
+            // Update main image
+            document.getElementById('mainImage').src = src;
+            
+            // Remove active class from all thumbnails
+            const allThumbnails = document.querySelectorAll('.thumbnail-img');
+            allThumbnails.forEach(thumb => {
+                thumb.classList.remove('active');
+            });
+            
+            // Add active class to clicked thumbnail
+            clickedThumbnail.classList.add('active');
+        }
+
+        function increaseQuantity() {
+            const quantityInput = document.getElementById('quantity');
+            quantityInput.value = parseInt(quantityInput.value) + 1;
+        }
+
+        function decreaseQuantity() {
+            const quantityInput = document.getElementById('quantity');
+            if (parseInt(quantityInput.value) > 1) {
+                quantityInput.value = parseInt(quantityInput.value) - 1;
+            }
+        }
+
+        // Load product details from URL parameters
+        function loadProductDetails() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const product = urlParams.get('product');
+            const name = urlParams.get('name');
+            const price = urlParams.get('price');
+            const image = urlParams.get('image');
+
+            if (product && name && price && image) {
+                // Update product name
+                document.querySelector('.product-info h1').textContent = name;
+                
+                // Update price
+                document.querySelector('.price .display-6').textContent = '$' + price;
+                
+                // Update main image
+                document.getElementById('mainImage').src = 'images/menu/' + image;
+                
+                // Update all thumbnails to use the same product image
+                const thumbnails = document.querySelectorAll('.thumbnail-img');
+                thumbnails.forEach(thumb => {
+                    thumb.src = 'images/menu/' + image;
+                });
+                
+                // Update page title
+                document.title = name + ' - FastFood Pro';
+            }
+        }
+
+        // Load product details when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            loadProductDetails();
+        });
+
+        window.addEventListener('DOMContentLoaded', function() {
+            // Lấy thông tin sản phẩm từ URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const id = urlParams.get('product');
+            const name = urlParams.get('name');
+            const price = parseFloat(urlParams.get('price'));
+            const img = urlParams.get('image') ? 'images/menu/' + urlParams.get('image') : '';
+            
+            // Lấy nút thêm vào giỏ hàng
+            const addBtn = document.querySelector('.add-to-cart-btn');
+            if (addBtn) {
+                addBtn.addEventListener('click', function() {
+                    // Lấy số lượng
+                    const quantity = parseInt(document.getElementById('quantity').value) || 1;
+                    // Lấy tuỳ chọn
+                    let options = [];
+                    if(document.getElementById('extraCheese')?.checked) options.push('Extra Cheese');
+                    if(document.getElementById('bacon')?.checked) options.push('Bacon');
+                    if(document.getElementById('sauce')?.checked) options.push('Extra Sauce');
+                    if(document.getElementById('jalapenos')?.checked) options.push('Jalapenos');
+                    if (!id || !name || isNaN(price)) {
+                        console.warn('Thiếu thông tin sản phẩm:', {id, name, price});
+                        return;
+                    }
+                    const product = { id, name, price, img, options: options.join(', '), quantity };
+                    console.log('Thêm vào giỏ hàng:', product);
+                    addToCart(product);
+                    // Hiện thông báo
+                    if (window.bootstrap) {
+                        const toast = document.createElement('div');
+                        toast.className = 'toast align-items-center text-bg-success border-0 show';
+                        toast.style.position = 'fixed';
+                        toast.style.top = '80px';
+                        toast.style.right = '20px';
+                        toast.style.zIndex = 9999;
+                        toast.innerHTML = `<div class='d-flex'><div class='toast-body'>Đã thêm vào giỏ hàng!</div><button type='button' class='btn-close btn-close-white me-2 m-auto' data-bs-dismiss='toast'></button></div>`;
+                        document.body.appendChild(toast);
+                        setTimeout(() => toast.remove(), 1500);
+                    } else {
+                        alert('Đã thêm vào giỏ hàng!');
+                    }
+                });
+            }
+        });
+    </script>
+    <script src="js/cart.js"></script>
+</body>
+</html> 
